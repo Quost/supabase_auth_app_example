@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'auth_gate.dart';
+import 'app_router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +35,13 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: const Color(0xFF0057B8),
         brightness: Brightness.light,
       ),
-      home: const AuthGate(),
+      initialRoute: AppRouter.root,
+      onGenerateRoute: (settings) {
+        if (settings.name == AppRouter.root) {
+          return MaterialPageRoute(builder: (_) => const AuthGate());
+        }
+        return AppRouter.onGenerateRoute(settings);
+      },
     );
   }
 }

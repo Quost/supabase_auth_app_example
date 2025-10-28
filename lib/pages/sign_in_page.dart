@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'sign_up_page.dart';
+import '../app_router.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -98,21 +98,19 @@ class _SignInPageState extends State<SignInPage> {
                               ? const SizedBox(
                                   height: 20,
                                   width: 20,
-                                  child: CircularProgressIndicator(strokeWidth: 2),
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
                                 )
                               : const Text('Entrar'),
                         ),
                         const SizedBox(height: 12),
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (_) => const SignUpPage(),
-                              ),
-                            );
+                            Navigator.of(context).pushNamed(AppRouter.signUp);
                           },
                           child: const Text('Criar uma conta'),
-                        )
+                        ),
                       ],
                     ),
                   ),

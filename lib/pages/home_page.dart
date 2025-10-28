@@ -19,7 +19,10 @@ class HomePage extends StatelessWidget {
             children: [
               Text(
                 'Olá, $email!',
-                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
