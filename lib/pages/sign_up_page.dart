@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../services/profile_service.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
@@ -33,6 +35,11 @@ class _SignUpPageState extends State<SignUpPage> {
         email: _emailCtrl.text.trim(),
         password: _passCtrl.text,
       );
+
+      final userId = res.user?.id;
+      if (userId != null) {
+        await ProfileService().ensureProfileRow(userId);
+      }
 
       if (res.session == null) {
         _showSnack('Verifique seu e‑mail para confirmar a conta.');
